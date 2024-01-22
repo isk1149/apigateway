@@ -1,0 +1,39 @@
+###
+GET http://localhost:8000/healthcheck
+
+###
+GET http://localhost:62045/health_check
+
+###
+GET 127.0.0.1:8000/user-service/welcome
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwYTIyMmZmZS03NzQ1LTQ5ODktYmNmMy1iYWQxOGMxNTk1OGMiLCJleHAiOjE3MDU0MTUxMzJ9.i_auSd-2gmHemXuAxUb6vf0Qn5N1GcCIDKnqnBVkid0eQQGzItFlgXuuh633jVWscOWjEPIkd5nfYvu98oplOQ
+
+###
+GET 127.0.0.1:8000/user-service/health_check
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwYTIyMmZmZS03NzQ1LTQ5ODktYmNmMy1iYWQxOGMxNTk1OGMiLCJleHAiOjE3MDU0MTUxMzJ9.i_auSd-2gmHemXuAxUb6vf0Qn5N1GcCIDKnqnBVkid0eQQGzItFlgXuuh633jVWscOWjEPIkd5nfYvu98oplOQ
+
+###
+GET 127.0.0.1:8000/actuator/health
+
+###
+POST 127.0.0.1:8000/actuator/busrefresh
+
+###
+POST 127.0.0.1:8000/user-service/actuator/busrefresh
+
+###
+GET http://localhost:8000/order-service/eaee14d3-5406-4fc5-8c85-e6dc63d1226e/orders
+
+###
+POST http://localhost:8000/order-service/678504a2-ed24-4503-bbd2-74e585280f29/orders
+content-type: application/json
+
+{
+  "productId": "Catalog-0008",
+  "qty": 5,
+  "unitPrice": 900
+}
+
+###
+GET http://localhost:8000/user-service/users/680a122b-37b4-47b6-abec-5802ae2f7f65
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2ODBhMTIyYi0zN2I0LTQ3YjYtYWJlYy01ODAyYWUyZjdmNjUiLCJleHAiOjE3MDU3MTg0MzV9.3x9p0sqfu9WMY5GMO6ipIcfefEs1m0NyGupeSLXVpS51nPBniA7Pkbo1DaOHMrRIiRQ3RyWeiohFNEOx01n4QA
