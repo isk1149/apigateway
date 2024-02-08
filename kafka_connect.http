@@ -1,0 +1,71 @@
+###1
+DELETE http://127.0.0.1:8083/connectors/my-sink-connector
+
+###2
+GET http://127.0.0.1:8083/connector-plugins
+
+###3
+GET http://127.0.0.1:8083/connectors
+
+###4
+POST http://127.0.0.1:8083/connectors
+Content-Type: application/json
+
+{
+  "name": "my-source-connect-12",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:h2:tcp://localhost/~/userdb",
+    "connection.user": "sa",
+    "connection.password": "",
+    "mode": "incrementing",
+    "incrementing.column.name": "ID",
+    "schema.pattern": "PUBLIC",
+    "table.whitelist": "TBUSERSTHREE",
+    "topic.prefix": "MY_TOPIC12_",
+    "tasks.max": "1",
+    "topic.creation.default.replication.factor":1,
+    "topic.creation.default.partitions" : 1
+  }
+}
+
+###5
+GET http://127.0.0.1:8083/connectors/my-source-connect/status
+
+###6
+POST http://127.0.0.1:8083/connectors
+Content-Type: application/json
+
+{
+  "name": "my-source-connect-5",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:mariadb://localhost:3306/mydb",
+    "connection.user": "root",
+    "connection.password": "test1357",
+    "mode": "incrementing",
+    "incrementing.column.name": "ID",
+    "table.whitelist": "users",
+    "topic.prefix": "my_topic5_",
+    "tasks.max": "1"
+  }
+}
+
+###7
+POST http://127.0.0.1:8083/connectors
+Content-Type: application/json
+
+{
+  "name": "my-order-sink-connect-1",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "connection.url": "jdbc:h2:tcp://localhost/~/orderdb",
+    "connection.user": "sa",
+    "connection.password": "",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "delete.enabled": "false",
+    "task.max": "1",
+    "topics": "orders"
+  }
+}

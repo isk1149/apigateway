@@ -1,0 +1,14 @@
+###
+GET http://localhost:8000/healthcheck
+
+###
+GET http://localhost:62045/health_check
+
+###
+GET 127.0.0.1:8000/actuator/health
+
+###
+POST 127.0.0.1:8000/actuator/busrefresh
+
+###
+POST 127.0.0.1:8000/user-service/actuator/busrefresh
